@@ -1,0 +1,88 @@
+BLACK BOX NETWORK SERVICES — IT EMPLOYEE HANDBOOK
+Version 3.2 | Last Updated: January 2026
+IT Help Desk: helpdesk@blackbox.com | Extension: 4357
+
+==============================================================
+SECTION 1: VPN SETUP AND TROUBLESHOOTING
+==============================================================
+
+1.1 VPN Installation and Initial Setup
+All employees are required to use the company-approved Cisco AnyConnect VPN client when working remotely or accessing internal systems from outside the corporate network. To install VPN, navigate to the IT Self-Service Portal at portal.blackbox.com, log in with your Active Directory credentials, and download the AnyConnect installer from the "Remote Access" section. After installation, enter the VPN gateway address vpn.blackbox.com, authenticate with your corporate email and password, and complete the MFA prompt via Microsoft Authenticator. If you encounter certificate errors during the first connection, contact the IT Help Desk to verify that your device's root certificate store is up to date.
+
+1.2 VPN Troubleshooting — Common Issues
+If your VPN disconnects when switching between Wi-Fi networks, this is typically caused by the "Trusted Network Detection" feature interpreting the new network as untrusted and forcing a re-authentication cycle. To resolve this: (a) In AnyConnect Preferences, enable "Start Before Logon" to maintain the tunnel during network transitions. (b) Ensure your Wi-Fi adapter power management settings are set to "Maximum Performance" to prevent the adapter sleeping and dropping the tunnel. (c) If disconnects persist on hotel or public Wi-Fi, enable the "Fallback to SSL" option which routes VPN over port 443, bypassing restrictive firewalls. (d) On Windows 11, go to Settings > Network > Advanced > DNS and set the DNS server to 8.8.8.8 before connecting to ensure name resolution does not interfere with the tunnel negotiation. For persistent issues, collect the DART diagnostic bundle from AnyConnect preferences and attach it to your IT ticket.
+
+1.3 VPN Split Tunneling Policy
+Black Box enforces a full-tunnel VPN policy for all corporate devices. This means all internet traffic, including personal browsing, is routed through corporate infrastructure when VPN is active. Split tunneling is disabled by policy to ensure DLP controls and web filtering are applied consistently. Exceptions for specific high-bandwidth applications (e.g., video conferencing) must be submitted via a ServiceNow change request with manager approval. The VPN policy is reviewed quarterly by the Information Security team.
+
+==============================================================
+SECTION 2: PASSWORD RESET POLICIES
+==============================================================
+
+2.1 Password Expiration and Rotation Policy
+All employee passwords must be reset every 90 days in accordance with the corporate security policy (POL-SEC-001). Password resets are enforced via Azure Active Directory (now Microsoft Entra ID). Employees will receive email reminders at 14 days, 7 days, and 1 day before expiration. Passwords must be at least 14 characters, include uppercase and lowercase letters, at least one number, and at least one special character. Passwords cannot match any of the last 12 passwords used. The SSO portal at sso.blackbox.com is the primary method for changing your password. If your password expires before you reset it, contact the IT Help Desk immediately — your account will be locked after 5 failed login attempts.
+
+2.2 Multi-Factor Authentication (MFA) Requirements
+MFA is mandatory for all employees accessing corporate systems, including email, VPN, SharePoint, and internal applications. The primary MFA method is Microsoft Authenticator (push notification). Hardware tokens (YubiKey 5 series) are available for employees in high-security roles or who frequently work in areas without mobile coverage — request one via a ServiceNow ticket with manager approval. If you lose your MFA device, call the IT Help Desk emergency line (ext. 4357) for immediate account recovery. Do not share MFA codes with anyone, including IT staff. Legitimate IT staff will never ask for your MFA code.
+
+2.3 Privileged Account Management
+Service accounts and administrative accounts are managed separately from standard user accounts. All privileged accounts require MFA and are subject to Privileged Identity Management (PIM) policies in Entra ID, meaning elevated access must be activated on-demand and is time-limited to 8 hours per session. Privileged account passwords rotate automatically every 30 days via CyberArk Vault. If you require temporary admin access for a project, submit a PAM request in ServiceNow with your manager's approval and a defined project end date.
+
+==============================================================
+SECTION 3: SOFTWARE ACCESS REQUEST PROCESS
+==============================================================
+
+3.1 Standard Software Requests
+Employees may request approved software from the company software catalog through the IT Self-Service Portal. Catalog software (e.g., Microsoft Office, Zoom, Slack, VS Code) is provisioned automatically upon request and typically delivered within 2 hours via SCCM/Intune. Non-catalog software requests are subject to security review and must be submitted as a ServiceNow service request. Allow 5-7 business days for non-catalog software approvals.
+
+3.2 Software Approval Thresholds
+All software requests exceeding $500 per year in licensing cost require manager approval through ServiceNow before IT will proceed with procurement. Requests exceeding $5,000 per year require both manager approval and Director-level sign-off. Enterprise-wide software agreements (over $50,000) must go through the IT Procurement Committee and require a minimum of 30 days lead time. When submitting a request, include the vendor name, license type, number of seats, annual cost, and business justification. Requests without cost information will be returned for completion.
+
+3.3 Software Compliance and License Management
+Black Box audits software installations quarterly using SCCM inventory reports. Employees found running unlicensed software will have it removed without notice and may face disciplinary action under the Acceptable Use Policy. If you need software installed on a device not managed by IT (e.g., personal laptop for approved BYOD), you must still obtain an approved license through the standard process. The IT Asset Management team maintains the software license register. Inquiries about existing enterprise licenses should be directed to itassets@blackbox.com.
+
+==============================================================
+SECTION 4: HARDWARE REPLACEMENT POLICY
+==============================================================
+
+4.1 Standard Hardware Refresh Cycle
+Black Box follows a 4-year hardware refresh cycle for laptops and a 5-year cycle for desktop workstations. Devices approaching end-of-life are flagged automatically in the asset management system and owners are contacted 90 days before the refresh date. To initiate an early replacement due to hardware failure, submit a ticket via the IT Self-Service Portal. A technician will assess the device within 1 business day for Priority 1 (completely non-functional) and within 3 business days for Priority 2 (intermittent issues). If your device needs to be sent out for repair, IT will provide a loaner device within 4 business hours.
+
+4.2 Hardware Request for New Employees
+Managers must submit a hardware request for new employees through the IT New Hire workflow in ServiceNow at least 5 business days before the employee's start date. Standard hardware kits include: one laptop (Windows or Mac depending on role), a USB-C docking station, dual 24-inch monitors, keyboard, mouse, and headset. Specialized hardware (e.g., 4K monitors for design roles, high-memory workstations for data science) must be specified in the request and may require additional lead time and manager approval. All hardware is tagged with an asset sticker and registered in the IT asset database on delivery.
+
+==============================================================
+SECTION 5: ACCEPTABLE USE POLICY
+==============================================================
+
+5.1 Corporate Device Usage Standards
+Corporate devices are provided for business use. Incidental personal use is permitted provided it does not interfere with work responsibilities, consumes excessive bandwidth, or violates any provisions of this policy. Prohibited activities include: installing unauthorized software, visiting sites categorized as illegal or malicious by the web filter, using corporate devices to mine cryptocurrency, storing personal data that would conflict with GDPR or CCPA obligations, and circumventing any security controls (e.g., using VPN bypass tools). Violations are logged by the endpoint DLP solution and reviewed by Information Security. First violations result in a documented warning; repeat violations may result in device privileges being revoked or employment action.
+
+5.2 Data Classification and Handling
+Black Box classifies data into four levels: Public, Internal, Confidential, and Restricted. Confidential data (e.g., customer PII, financial records) must be encrypted at rest and in transit. Restricted data (e.g., trade secrets, M&A information) requires additional access controls and may only be stored on approved systems. Employees must not store Confidential or Restricted data on personal cloud storage services (e.g., personal Google Drive, Dropbox). Approved cloud storage is OneDrive for Business, which is encrypted and subject to DLP policies. Data classification labels are applied through Microsoft Purview. Questions about data classification should be directed to the Data Governance team at datagovernance@blackbox.com.
+
+==============================================================
+SECTION 6: ESCALATION MATRIX AND SLA TARGETS
+==============================================================
+
+6.1 Ticket Priority Definitions and SLA Targets
+The IT Help Desk uses a four-tier priority system. Priority 1 (Critical): Complete service outage affecting multiple users or business-critical systems — initial response within 15 minutes, resolution target 4 hours. Examples: email server down, VPN gateway unreachable, active security incident. Priority 2 (High): Significant issue affecting one user's ability to perform their role — initial response within 1 hour, resolution target 8 business hours. Examples: laptop won't boot, unable to access key application. Priority 3 (Medium): Partial functionality impairment or performance degradation — initial response within 4 hours, resolution target 3 business days. Examples: slow VPN performance, printer issues, non-critical application errors. Priority 4 (Low): General questions, how-to requests, and non-urgent enhancements — initial response within 1 business day, resolution target 5 business days. Examples: software training requests, account access reviews.
+
+6.2 Escalation Path: L1 → L2 → L3
+Level 1 (L1) Support handles first contact: password resets, basic troubleshooting, how-to questions, and ticket routing. L1 agents resolve approximately 70% of tickets. If an L1 agent cannot resolve a ticket within 30 minutes, it is escalated to L2. Level 2 (L2) Support handles advanced troubleshooting: complex application issues, network problems, device reimaging, and security incidents. L2 engineers have access to remote administration tools and enterprise log systems. L2 resolves approximately 25% of all tickets. Issues requiring vendor engagement, major infrastructure changes, or root cause analysis are escalated to Level 3 (L3) Engineering. L3 is also engaged for any Priority 1 incidents automatically. L3 owns permanent fixes, infrastructure changes, and security vulnerability remediation.
+
+6.3 IT Help Desk Contact Information
+Phone: Extension 4357 (HELP) | External: +1-800-555-4357. Email: helpdesk@blackbox.com. Self-Service Portal: portal.blackbox.com. Live Chat: Available on the intranet home page, Monday–Friday, 7am–8pm ET. After-hours support for Priority 1 and Priority 2 issues: call the emergency line +1-800-555-9999. Tickets submitted via email or portal are automatically categorized and routed. Do not submit the same issue through multiple channels — this creates duplicate tickets and slows response times.
+
+==============================================================
+SECTION 7: REMOTE WORK IT GUIDELINES
+==============================================================
+
+7.1 Home Network and Security Requirements for Remote Workers
+Employees approved for remote work must meet the following IT requirements: (a) Home router must support WPA2 or WPA3 encryption — unsecured (open) networks are prohibited for corporate work. (b) Corporate VPN must be active whenever accessing any internal system, including email on non-mobile devices. (c) Employees should have a minimum of 25 Mbps download / 10 Mbps upload bandwidth available for uninterrupted video conferencing and remote desktop sessions. (d) Physical security: the device screen must be locked when unattended (Windows + L shortcut), and corporate devices must not be left in vehicles or other unsecured locations. (e) If a corporate device is lost or stolen, report it to the IT Help Desk immediately at +1-800-555-4357 so that remote wipe can be initiated via Microsoft Intune.
+
+7.2 Remote Desktop and Virtual Desktop Infrastructure
+Employees who need to access their office workstation remotely can use the Virtual Desktop Infrastructure (VDI) platform available at vdi.blackbox.com. VDI requires active VPN. For employees without a dedicated VDI license, Windows Remote Desktop (RDP) is available for connecting to office desktops — request a firewall rule exception via ServiceNow for RDP access. Note: RDP must always be used over VPN and never exposed directly to the internet. Persistent VDI desktop licenses are allocated to roles that require it by default; contact IT if you believe your role qualifies for a persistent VDI allocation.
+
+7.3 Approved Collaboration Tools for Remote Work
+The following tools are approved for remote collaboration: Microsoft Teams (primary video conferencing and chat), Zoom (for external client calls — requires license approval for host role), SharePoint Online (document collaboration), OneDrive for Business (file sync and share), and Azure DevOps (for engineering teams). Unapproved tools such as WhatsApp, Signal, Discord, or personal Google Meet accounts must not be used for discussing Confidential or Restricted data. All approved tools are integrated with Single Sign-On (SSO) — if you cannot access any of these tools with your corporate credentials, submit a helpdesk ticket before attempting any workaround.
