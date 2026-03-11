@@ -1,0 +1,14 @@
+{
+  "name": "deskmate",
+  "version": "1.0.0",
+  "description": "AI-powered IT Help Desk — React + TypeScript Orchestrator + Python RAG",
+  "scripts": {
+    "dev": "concurrently --names \"RAG,ORCH,UI\" --prefix-colors \"blue,yellow,green\" \"npm run dev:rag\" \"npm run dev:orchestrator\" \"npm run dev:frontend\"",
+    "dev:rag": "cd rag-service && uvicorn app.main:app --reload --port 8000",
+    "dev:orchestrator": "cd orchestrator && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
